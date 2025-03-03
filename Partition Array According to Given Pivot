@@ -1,0 +1,31 @@
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+        Stack<Integer> list = new Stack<>();
+        Stack<Integer> equal = new Stack<>();
+        ArrayList<Integer> temp1 = new ArrayList<>();
+        int n = nums.length;
+        int j = 0;
+        for(int i=0;i<n;i++){
+            if(nums[i]>pivot){
+                temp1.add(nums[i]);
+            }else if(nums[i]<pivot){
+                nums[j++] = nums[i];
+            }else if(nums[i]==pivot){
+                equal.add(nums[i]);
+            }
+        }
+
+        for(int i=temp1.size()-1;i>=0;i--){
+            list.push(temp1.get(i));
+        }
+        //for equal
+        while(!equal.isEmpty()){
+            nums[j++] = equal.pop();
+        }
+        //for greater
+        while(!list.isEmpty()){
+            nums[j++] = list.pop();
+        }
+        return nums;
+    }
+}
