@@ -10,3 +10,23 @@ class Solution {
         return prev;
     }
 }
+
+
+// second solution of this problem.
+class Solution {
+    public ListNode reverseList(ListNode head) {
+       
+        ListNode p = head;
+        ListNode q = null;
+        ListNode r;
+        while( p != null){
+            r = q;
+             q = p;
+             p = p.next;
+             q.next = r;
+        }
+        head = q;
+        return q;
+
+    }
+}
